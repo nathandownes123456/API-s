@@ -23,7 +23,7 @@
 <div  ng-app="myApp" ng-controller="myCtrl">
 <div class="row">
     <div class="col-md-12 box">
-        <h1> {{testresults}} </h1>
+     {{planets}}
     </div>
  
 </div>
@@ -43,20 +43,16 @@
    
 
 <script>
-var app = angular.module('myApp', ['ngAnimate']);
-app.controller('myCtrl', function($scope, $http, $interval) { 
-  
- 
-        $http.get("http://api.open-notify.org/iss-now.json/")
+var app = angular.module('myApp', ['ngAnimate']); 
+    app.controller('myCtrl', function($scope, $http, $interval) { 
+
+           $http.get("http://swapi.co/api/planets/")
   .then(function(response){ 
             
-            $scope.testresults = response.data;
-            console.log($scope.testresults);
+            $scope.planets = response.data.results;
+            console.log($scope.planets);
        
         });
-
-    
-
 
         
         
